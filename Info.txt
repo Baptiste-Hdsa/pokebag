@@ -1,0 +1,50 @@
+Info sur une attaque :
+    *2 ou /2 pour une attaque contre un type faible ou fort
+    attaque type qui a un compteur d'utilisation
+    attaque basic qui peut use à l'infini
+    capacité spécial sans compteur et qui peut seulement être lancé après une attaque type
+    sous l'état de la paralysie le monstre a 1/4 de lancer une attaque
+    sous inondation le monstre peut raté sons attaque et s'infliger 1/4 des dégats de son attaque
+
+Info sur Etat :
+    un seule état à la fois
+    l'etat n'est pas changé en cas de monstsre, donc il reprendra quand le joueur resortira son monstre
+    La paralysie peut se redéclencher après chaque tour tour/6 (max 6 tours), sous l'état de la paralysie le monstre a 1/4 de lancer une attaque
+    Si le monstre est de type eau alors il n'est pas affecté et est immédiatement retiré
+
+
+
+Info sur pouvoir :
+    L'innondation durt 1 à trois 3 tours
+
+
+src/
+└── fr/
+    └── esiea/
+        └── monstredepoche/
+            ├── Main.java                   // Point d'entrée
+            ├── model/                      // Les données
+            │   ├── Type.java               // Enum (FEU, EAU...)
+            │   ├── Statut.java             // Enum (BRULE, PARALYSE...)
+            │   ├── Attaque.java
+            │   ├── Joueur.java
+            │   ├── items/
+            │   │   ├── Objet.java          // Interface ou Classe Abstraite
+            │   │   ├── Potion.java
+            │   │   └── Medicament.java
+            │   └── monstres/
+            │       ├── Monstre.java        // Classe Mère Abstraite
+            │       ├── MonstreFeu.java
+            │       ├── MonstreEau.java
+            │       ├── MonstreTerre.java
+            │       ├── MonstreFoudre.java
+            │       ├── MonstrePlante.java
+            │       └── MonstreInsecte.java
+            ├── logic/                      // La mécanique
+            │   ├── MoteurCombat.java       // Gère les tours et l'ordre
+            │   ├── CalculateurDegats.java  // La formule mathématique
+            │   └── Terrain.java            // Gère l'inondation
+            ├── data/                       // Gestion des fichiers
+            │   └── ChargeurDonnees.java    // Le parser de fichier texte
+            └── view/                       // Interaction utilisateur
+                └── ConsoleInterface.java

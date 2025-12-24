@@ -1,0 +1,1191 @@
+Attack
+    Name Thunderbolt
+    Type Electric
+    Power 90
+    NbUse 10
+    Fail 0.04
+EndAttack
+
+Attack
+    Name Spark
+    Type Electric
+    Power 65
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name VoltTackle
+    Type Electric
+    Power 120
+    NbUse 8
+    Fail 0.12
+EndAttack
+
+Attack
+    Name ElectroBeam
+    Type Electric
+    Power 100
+    NbUse 8
+    Fail 0.08
+EndAttack
+
+Attack
+    Name StaticBurst
+    Type Electric
+    Power 50
+    NbUse 20
+    Fail 0.06
+EndAttack
+
+Attack
+    Name LightningRush
+    Type Electric
+    Power 90
+    NbUse 10
+    Fail 0.07
+EndAttack
+
+Attack
+    Name ThunderCrash
+    Type Electric
+    Power 110
+    NbUse 6
+    Fail 0.10
+EndAttack
+
+Attack
+    Name FlashBolt
+    Type Electric
+    Power 55
+    NbUse 20
+    Fail 0.04
+EndAttack
+
+Attack
+    Name ShockPulse
+    Type Electric
+    Power 48
+    NbUse 22
+    Fail 0.04
+EndAttack
+
+Attack
+    Name IonCharge
+    Type Electric
+    Power 60
+    NbUse 18
+    Fail 0.04
+EndAttack
+
+Attack
+    Name VoltBeam
+    Type Electric
+    Power 75
+    NbUse 12
+    Fail 0.05
+EndAttack
+
+Attack
+    Name ArcStrike
+    Type Electric
+    Power 68
+    NbUse 14
+    Fail 0.05
+EndAttack
+
+Attack
+    Name WildCharge
+    Type Electric
+    Power 90
+    NbUse 10
+    Fail 0.07
+EndAttack
+
+Attack
+    Name ThunderPunch
+    Type Electric
+    Power 75
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name ThunderFang
+    Type Electric
+    Power 65
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name CurrentSurge
+    Type Electric
+    Power 45
+    NbUse 25
+    Fail 0.03
+EndAttack
+
+Attack
+    Name ElectricStorm
+    Type Electric
+    Power 130
+    NbUse 4
+    Fail 0.12
+EndAttack
+
+Attack
+    Name VoltSurge
+    Type Electric
+    Power 85
+    NbUse 10
+    Fail 0.06
+EndAttack
+
+Attack
+    Name LightningStrike
+    Type Electric
+    Power 115
+    NbUse 8
+    Fail 0.10
+EndAttack
+
+Attack
+    Name Shockwave
+    Type Electric
+    Power 70
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name SparkRain
+    Type Electric
+    Power 35
+    NbUse 30
+    Fail 0.02
+EndAttack
+
+Attack
+    Name StaticField
+    Type Electric
+    Power 30
+    NbUse 35
+    Fail 0.03
+EndAttack
+
+Attack
+    Name HydroPump
+    Type Water
+    Power 130
+    NbUse 5
+    Fail 0.11
+EndAttack
+
+Attack
+    Name Surf
+    Type Water
+    Power 90
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name Waterfall
+    Type Water
+    Power 80
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name TidalWave
+    Type Water
+    Power 110
+    NbUse 6
+    Fail 0.10
+EndAttack
+
+Attack
+    Name AquaJet
+    Type Water
+    Power 40
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name HydroCannon
+    Type Water
+    Power 150
+    NbUse 5
+    Fail 0.12
+EndAttack
+
+Attack
+    Name OceanicRoar
+    Type Water
+    Power 95
+    NbUse 9
+    Fail 0.09
+EndAttack
+
+Attack
+    Name Whirlpool
+    Type Water
+    Power 65
+    NbUse 15
+    Fail 0.06
+EndAttack
+
+Attack
+    Name MistShield
+    Type Water
+    Power 0
+    NbUse 25
+    Fail 0.03
+EndAttack
+
+Attack
+    Name FloodStrike
+    Type Water
+    Power 75
+    NbUse 12
+    Fail 0.06
+EndAttack
+
+Attack
+    Name RainDance
+    Type Water
+    Power 0
+    NbUse 30
+    Fail 0.02
+EndAttack
+
+Attack
+    Name DepthPulse
+    Type Water
+    Power 70
+    NbUse 12
+    Fail 0.06
+EndAttack
+
+Attack
+    Name RippleBurst
+    Type Water
+    Power 45
+    NbUse 22
+    Fail 0.04
+EndAttack
+
+Attack
+    Name AquaVortex
+    Type Water
+    Power 100
+    NbUse 8
+    Fail 0.08
+EndAttack
+
+Attack
+    Name WaterPulse
+    Type Water
+    Power 60
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name SaltSpray
+    Type Water
+    Power 35
+    NbUse 26
+    Fail 0.03
+EndAttack
+
+Attack
+    Name JetStream
+    Type Water
+    Power 60
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name Tsunami
+    Type Water
+    Power 120
+    NbUse 6
+    Fail 0.12
+EndAttack
+
+Attack
+    Name WaveCrash
+    Type Water
+    Power 100
+    NbUse 10
+    Fail 0.09
+EndAttack
+
+Attack
+    Name SteamBlast
+    Type Water
+    Power 80
+    NbUse 14
+    Fail 0.06
+EndAttack
+
+Attack
+    Name CascadeSurge
+    Type Water
+    Power 95
+    NbUse 9
+    Fail 0.08
+EndAttack
+
+Attack
+    Name SeaLance
+    Type Water
+    Power 55
+    NbUse 18
+    Fail 0.05
+EndAttack
+
+Attack
+    Name Flamethrower
+    Type Fire
+    Power 90
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name FireSpin
+    Type Fire
+    Power 35
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name HeatWave
+    Type Fire
+    Power 95
+    NbUse 10
+    Fail 0.07
+EndAttack
+
+Attack
+    Name Inferno
+    Type Fire
+    Power 100
+    NbUse 8
+    Fail 0.10
+EndAttack
+
+Attack
+    Name LavaPlume
+    Type Fire
+    Power 80
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name Overheat
+    Type Fire
+    Power 130
+    NbUse 5
+    Fail 0.10
+EndAttack
+
+Attack
+    Name FlameCharge
+    Type Fire
+    Power 50
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name BlazeCannon
+    Type Fire
+    Power 130
+    NbUse 5
+    Fail 0.12
+EndAttack
+
+Attack
+    Name EmberWave
+    Type Fire
+    Power 45
+    NbUse 22
+    Fail 0.04
+EndAttack
+
+Attack
+    Name PyreBlast
+    Type Fire
+    Power 75
+    NbUse 12
+    Fail 0.06
+EndAttack
+
+Attack
+    Name FlameWall
+    Type Fire
+    Power 0
+    NbUse 15
+    Fail 0.04
+EndAttack
+
+Attack
+    Name CinderStorm
+    Type Fire
+    Power 70
+    NbUse 14
+    Fail 0.06
+EndAttack
+
+Attack
+    Name MoltenSlam
+    Type Fire
+    Power 85
+    NbUse 10
+    Fail 0.07
+EndAttack
+
+Attack
+    Name SearingHeat
+    Type Fire
+    Power 90
+    NbUse 9
+    Fail 0.08
+EndAttack
+
+Attack
+    Name LavaSurge
+    Type Fire
+    Power 100
+    NbUse 8
+    Fail 0.09
+EndAttack
+
+Attack
+    Name FlameBurst
+    Type Fire
+    Power 50
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name FireSpiral
+    Type Fire
+    Power 60
+    NbUse 18
+    Fail 0.05
+EndAttack
+
+Attack
+    Name Pyroclasm
+    Type Fire
+    Power 120
+    NbUse 6
+    Fail 0.11
+EndAttack
+
+Attack
+    Name InfernalRoar
+    Type Fire
+    Power 125
+    NbUse 5
+    Fail 0.12
+EndAttack
+
+Attack
+    Name ScorchingWind
+    Type Fire
+    Power 55
+    NbUse 18
+    Fail 0.05
+EndAttack
+
+Attack
+    Name EmberDance
+    Type Fire
+    Power 30
+    NbUse 30
+    Fail 0.03
+EndAttack
+
+Attack
+    Name BlazingRush
+    Type Fire
+    Power 82
+    NbUse 12
+    Fail 0.06
+EndAttack
+
+Attack
+    Name RazorLeaf
+    Type Grass
+    Power 55
+    NbUse 25
+    Fail 0.03
+EndAttack
+
+Attack
+    Name LeafBlade
+    Type Grass
+    Power 90
+    NbUse 10
+    Fail 0.05
+EndAttack
+
+Attack
+    Name LeafStorm
+    Type Grass
+    Power 130
+    NbUse 5
+    Fail 0.10
+EndAttack
+
+Attack
+    Name SolarBeam
+    Type Grass
+    Power 120
+    NbUse 10
+    Fail 0.10
+EndAttack
+
+Attack
+    Name SeedBomb
+    Type Grass
+    Power 80
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name PetalDance
+    Type Grass
+    Power 70
+    NbUse 10
+    Fail 0.05
+EndAttack
+
+Attack
+    Name LeafTornado
+    Type Grass
+    Power 65
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name VineWhip
+    Type Grass
+    Power 45
+    NbUse 25
+    Fail 0.03
+EndAttack
+
+Attack
+    Name SeedShot
+    Type Grass
+    Power 50
+    NbUse 22
+    Fail 0.03
+EndAttack
+
+Attack
+    Name BloomStrike
+    Type Grass
+    Power 60
+    NbUse 16
+    Fail 0.04
+EndAttack
+
+Attack
+    Name MossShield
+    Type Grass
+    Power 0
+    NbUse 30
+    Fail 0.02
+EndAttack
+
+Attack
+    Name RootTrap
+    Type Grass
+    Power 40
+    NbUse 25
+    Fail 0.04
+EndAttack
+
+Attack
+    Name VerdantRush
+    Type Grass
+    Power 70
+    NbUse 12
+    Fail 0.05
+EndAttack
+
+Attack
+    Name HerbBlade
+    Type Grass
+    Power 65
+    NbUse 15
+    Fail 0.04
+EndAttack
+
+Attack
+    Name ForestCurse
+    Type Grass
+    Power 0
+    NbUse 20
+    Fail 0.06
+EndAttack
+
+Attack
+    Name VineGrab
+    Type Grass
+    Power 30
+    NbUse 30
+    Fail 0.03
+EndAttack
+
+Attack
+    Name GreenFlare
+    Type Grass
+    Power 110
+    NbUse 7
+    Fail 0.09
+EndAttack
+
+Attack
+    Name LeafBarrage
+    Type Grass
+    Power 75
+    NbUse 12
+    Fail 0.05
+EndAttack
+
+Attack
+    Name BloomRing
+    Type Grass
+    Power 35
+    NbUse 30
+    Fail 0.02
+EndAttack
+
+Attack
+    Name JungleRoar
+    Type Grass
+    Power 95
+    NbUse 9
+    Fail 0.08
+EndAttack
+
+Attack
+    Name VerdureBolt
+    Type Grass
+    Power 48
+    NbUse 20
+    Fail 0.03
+EndAttack
+
+Attack
+    Name Earthquake
+    Type Earth
+    Power 100
+    NbUse 10
+    Fail 0.07
+EndAttack
+
+Attack
+    Name StoneEdge
+    Type Earth
+    Power 100
+    NbUse 10
+    Fail 0.07
+EndAttack
+
+Attack
+    Name RockSmash
+    Type Earth
+    Power 50
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name StoneCrush
+    Type Earth
+    Power 75
+    NbUse 15
+    Fail 0.06
+EndAttack
+
+Attack
+    Name SeismicWave
+    Type Earth
+    Power 120
+    NbUse 6
+    Fail 0.11
+EndAttack
+
+Attack
+    Name CraterBash
+    Type Earth
+    Power 130
+    NbUse 5
+    Fail 0.13
+EndAttack
+
+Attack
+    Name GroundChop
+    Type Earth
+    Power 65
+    NbUse 16
+    Fail 0.05
+EndAttack
+
+Attack
+    Name FaultLine
+    Type Earth
+    Power 115
+    NbUse 7
+    Fail 0.10
+EndAttack
+
+Attack
+    Name Landfall
+    Type Earth
+    Power 90
+    NbUse 9
+    Fail 0.07
+EndAttack
+
+Attack
+    Name BoulderSmash
+    Type Earth
+    Power 110
+    NbUse 8
+    Fail 0.09
+EndAttack
+
+Attack
+    Name TerraRush
+    Type Earth
+    Power 70
+    NbUse 14
+    Fail 0.06
+EndAttack
+
+Attack
+    Name Rockfall
+    Type Earth
+    Power 60
+    NbUse 18
+    Fail 0.05
+EndAttack
+
+Attack
+    Name EarthPower
+    Type Earth
+    Power 90
+    NbUse 10
+    Fail 0.10
+EndAttack
+
+Attack
+    Name MudBomb
+    Type Earth
+    Power 65
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name MuddyWater
+    Type Earth
+    Power 90
+    NbUse 10
+    Fail 0.10
+EndAttack
+
+Attack
+    Name GravelBarrage
+    Type Earth
+    Power 45
+    NbUse 22
+    Fail 0.04
+EndAttack
+
+Attack
+    Name DustCloud
+    Type Earth
+    Power 20
+    NbUse 30
+    Fail 0.03
+EndAttack
+
+Attack
+    Name GolemStomp
+    Type Earth
+    Power 95
+    NbUse 10
+    Fail 0.08
+EndAttack
+
+Attack
+    Name StoneSpear
+    Type Earth
+    Power 85
+    NbUse 12
+    Fail 0.07
+EndAttack
+
+Attack
+    Name EarthSlice
+    Type Earth
+    Power 95
+    NbUse 11
+    Fail 0.07
+EndAttack
+
+Attack
+    Name XScissor
+    Type Insect
+    Power 80
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name BugBuzz
+    Type Insect
+    Power 90
+    NbUse 10
+    Fail 0.04
+EndAttack
+
+Attack
+    Name SignalBeam
+    Type Insect
+    Power 75
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name BugBite
+    Type Insect
+    Power 60
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name ChitinShield
+    Type Insect
+    Power 0
+    NbUse 20
+    Fail 0.03
+EndAttack
+
+Attack
+    Name PincerClaw
+    Type Insect
+    Power 75
+    NbUse 15
+    Fail 0.06
+EndAttack
+
+Attack
+    Name SilkTrap
+    Type Insect
+    Power 0
+    NbUse 25
+    Fail 0.02
+EndAttack
+
+Attack
+    Name NectarGale
+    Type Insect
+    Power 40
+    NbUse 25
+    Fail 0.03
+EndAttack
+
+Attack
+    Name SwarmWave
+    Type Insect
+    Power 95
+    NbUse 10
+    Fail 0.08
+EndAttack
+
+Attack
+    Name LarvaDrain
+    Type Insect
+    Power 35
+    NbUse 28
+    Fail 0.03
+EndAttack
+
+Attack
+    Name HiveBomb
+    Type Insect
+    Power 85
+    NbUse 12
+    Fail 0.07
+EndAttack
+
+Attack
+    Name RazorWing
+    Type Insect
+    Power 70
+    NbUse 14
+    Fail 0.05
+EndAttack
+
+Attack
+    Name VenomSpike
+    Type Insect
+    Power 55
+    NbUse 18
+    Fail 0.05
+EndAttack
+
+Attack
+    Name BeetleBeam
+    Type Insect
+    Power 60
+    NbUse 20
+    Fail 0.04
+EndAttack
+
+Attack
+    Name PollenCloud
+    Type Insect
+    Power 0
+    NbUse 30
+    Fail 0.02
+EndAttack
+
+Attack
+    Name MandibleBash
+    Type Insect
+    Power 75
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name WingSlash
+    Type Insect
+    Power 70
+    NbUse 14
+    Fail 0.05
+EndAttack
+
+Attack
+    Name BugBarrage
+    Type Insect
+    Power 105
+    NbUse 8
+    Fail 0.09
+EndAttack
+
+Attack
+    Name InsectStorm
+    Type Insect
+    Power 120
+    NbUse 6
+    Fail 0.11
+EndAttack
+
+Attack
+    Name SwarmStrike
+    Type Insect
+    Power 60
+    NbUse 20
+    Fail 0.05
+EndAttack
+
+Attack
+    Name AcidSpray
+    Type Insect
+    Power 65
+    NbUse 15
+    Fail 0.05
+EndAttack
+
+Attack
+    Name Tackle
+    Type Normal
+    Power 50
+    NbUse 35
+    Fail 0.01
+EndAttack
+
+Attack
+    Name QuickAttack
+    Type Normal
+    Power 40
+    NbUse 25
+    Fail 0.03
+EndAttack
+
+Attack
+    Name BodySlam
+    Type Normal
+    Power 85
+    NbUse 10
+    Fail 0.05
+EndAttack
+
+Attack
+    Name DoubleEdge
+    Type Normal
+    Power 120
+    NbUse 5
+    Fail 0.10
+EndAttack
+
+Attack
+    Name HyperBeam
+    Type Normal
+    Power 150
+    NbUse 5
+    Fail 0.10
+EndAttack
+
+Attack
+    Name GigaImpact
+    Type Normal
+    Power 150
+    NbUse 5
+    Fail 0.10
+EndAttack
+
+Attack
+    Name QuickSmack
+    Type Normal
+    Power 35
+    NbUse 35
+    Fail 0.02
+EndAttack
+
+Attack
+    Name HeavyBlow
+    Type Normal
+    Power 85
+    NbUse 10
+    Fail 0.06
+EndAttack
+
+Attack
+    Name BrutalSwing
+    Type Normal
+    Power 100
+    NbUse 8
+    Fail 0.08
+EndAttack
+
+Attack
+    Name PowerSmash
+    Type Normal
+    Power 130
+    NbUse 5
+    Fail 0.12
+EndAttack
+
+Attack
+    Name FullForce
+    Type Normal
+    Power 120
+    NbUse 6
+    Fail 0.10
+EndAttack
+
+Attack
+    Name Headbutt
+    Type Normal
+    Power 60
+    NbUse 20
+    Fail 0.03
+EndAttack
+
+Attack
+    Name Slam
+    Type Normal
+    Power 70
+    NbUse 15
+    Fail 0.04
+EndAttack
+
+Attack
+    Name ChargeTackle
+    Type Normal
+    Power 95
+    NbUse 9
+    Fail 0.08
+EndAttack
+
+Attack
+    Name RecklessStrike
+    Type Normal
+    Power 110
+    NbUse 7
+    Fail 0.09
+EndAttack
+
+Attack
+    Name FinalStrike
+    Type Normal
+    Power 150
+    NbUse 4
+    Fail 0.15
+EndAttack
+
+Attack
+    Name CrushingBlow
+    Type Normal
+    Power 90
+    NbUse 10
+    Fail 0.06
+EndAttack
+
+Attack
+    Name Uppercut
+    Type Normal
+    Power 85
+    NbUse 10
+    Fail 0.05
+EndAttack
+
+Attack
+    Name PushBack
+    Type Normal
+    Power 30
+    NbUse 40
+    Fail 0.02
+EndAttack
+
+Attack
+    Name Swipe
+    Type Normal
+    Power 35
+    NbUse 35
+    Fail 0.02
+EndAttack
+
+Attack
+    Name BluntHit
+    Type Normal
+    Power 65
+    NbUse 14
+    Fail 0.04
+EndAttack
