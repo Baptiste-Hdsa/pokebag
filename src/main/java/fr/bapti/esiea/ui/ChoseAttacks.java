@@ -6,8 +6,10 @@ import fr.bapti.esiea.monster.Monster;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
+
 public class ChoseAttacks {
-    public ArrayList<Attack> chooseAttacks(Monster monster, ArrayList<Attack> listAttack) {
+    public ArrayList<Attack> chooseAttacks(Monster monster, ArrayList<Attack> listAttack, boolean human) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Attack> selected = new ArrayList<>();
 
@@ -18,7 +20,14 @@ public class ChoseAttacks {
 
         while (selected.size() < 4) {
             System.out.print("Enter index (" + selected.size() + "/4) or 'done': ");
-            String line = scanner.nextLine().trim();
+            String line;
+
+            if (human) {
+                line = scanner.nextLine().trim();
+            } else {
+                line = Integer.toString(getRandomInt(0, listAttack.size() - 1));
+                System.out.println(line);
+            }
 
             if (line.equalsIgnoreCase("done")) {
                 break;
@@ -52,4 +61,3 @@ public class ChoseAttacks {
         return selected;
     }
 }
-

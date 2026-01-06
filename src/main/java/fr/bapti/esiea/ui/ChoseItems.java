@@ -4,17 +4,19 @@ import fr.bapti.esiea.Etat;
 import fr.bapti.esiea.item.Item;
 import fr.bapti.esiea.item.Drug;
 import fr.bapti.esiea.item.Potion;
+import fr.bapti.esiea.monster.PlayerMonster;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
+
 public class ChoseItems {
-    public ArrayList<Item> chooseItems() {
+    public ArrayList<Item> chooseItems(boolean human) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Item> selected = new ArrayList<>();
         ArrayList<Item> availableItems = new ArrayList<>();
 
-        // Add some default items
         availableItems.add(new Drug("Health Potion", 50));
         availableItems.add(new Drug("Super Potion", 100));
         availableItems.add(new Potion("Burn Heal", Etat.BURNED));
@@ -28,7 +30,13 @@ public class ChoseItems {
 
         while (selected.size() < 5) {
             System.out.print("Enter index (" + selected.size() + "/5) or 'done': ");
-            String line = scanner.nextLine().trim();
+            String line;
+            if (human) {
+                line = scanner.nextLine().trim();
+            } else {
+                line = Integer.toString(getRandomInt(0, availableItems.size() - 1));
+                System.out.println(line);
+            }
 
             if (line.equalsIgnoreCase("done")) {
                 break;
@@ -58,4 +66,3 @@ public class ChoseItems {
         return selected;
     }
 }
-

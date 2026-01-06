@@ -73,7 +73,7 @@ public class PlayerMonster extends Monster {
         if (!isUnderground) {
             this.isUnderground = true;
             this.undergroundTurns = turns;
-            this.currentDefense *= 2; // Double defense
+            this.currentDefense *= 2;
             System.out.println(getName() + " burrows underground! Defense doubled.");
         }
     }
@@ -82,7 +82,7 @@ public class PlayerMonster extends Monster {
             undergroundTurns--;
             if (undergroundTurns <= 0) {
                 isUnderground = false;
-                this.currentDefense = this.originalDefense; // Restore defense
+                this.currentDefense = this.originalDefense;
                 System.out.println(getName() + " resurfaced.");
             }
         }

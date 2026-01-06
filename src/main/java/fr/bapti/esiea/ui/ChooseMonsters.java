@@ -8,10 +8,12 @@ import fr.bapti.esiea.attack.Attack;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ChoseMonsters {
-    private static final int MAX_MONSTERS = 3; // Selon l'énoncé
+import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
 
-    public ArrayList<PlayerMonster> chooseMonsters(ArrayList<Monster> listMonster, ArrayList<Attack> listAttack){
+public class ChooseMonsters {
+    private static final int MAX_MONSTERS = 3;
+
+    public ArrayList<PlayerMonster> chooseMonsters(ArrayList<Monster> listMonster, ArrayList<Attack> listAttack, boolean human){
         Scanner scanner = new Scanner(System.in);
         ArrayList<PlayerMonster> selected = new ArrayList<>();
         ChoseAttacks choseAttacks = new ChoseAttacks();
@@ -23,7 +25,14 @@ public class ChoseMonsters {
 
         while (selected.size() < MAX_MONSTERS) {
             System.out.print("Enter index (" + selected.size() + "/" + MAX_MONSTERS + ") or 'done': ");
-            String line = scanner.nextLine().trim();
+            String line;
+
+            if (human) {
+                line = scanner.nextLine().trim();
+            } else {
+                line = Integer.toString(getRandomInt(0, listMonster.size() - 1));
+                System.out.println(line);
+            }
 
             if (line.equalsIgnoreCase("done")) {
                 break;
@@ -62,7 +71,7 @@ public class ChoseMonsters {
                 }
             }
 
-            ArrayList<Attack> chosenAttacks = choseAttacks.chooseAttacks(chosen, availableAttacks);
+            ArrayList<Attack> chosenAttacks = choseAttacks.chooseAttacks(chosen, availableAttacks, human);
 
             PlayerMonster playerMonster = new PlayerMonster(chosen, chosenAttacks);
 
@@ -75,10 +84,9 @@ public class ChoseMonsters {
             Monster m = listMonster.get(0);
             ArrayList<Attack> availableAttacks = new ArrayList<>();
             for (Attack a : listAttack) if (a.getType() == Type.NORMAL || a.getType() == m.getType()) availableAttacks.add(a);
-            selected.add(new PlayerMonster(m, choseAttacks.chooseAttacks(m, availableAttacks)));
+            selected.add(new PlayerMonster(m, choseAttacks.chooseAttacks(m, availableAttacks, human)));
         }
 
         return selected;
     }
 }
-

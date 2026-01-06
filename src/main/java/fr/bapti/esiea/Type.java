@@ -6,17 +6,17 @@ public enum Type {
     WATER,
     ELECTRIC,
     EARTH,
-    INSECT, // Part of Nature category
-    GRASS,  // Part of Nature category
+    INSECT,
+    GRASS,
     NORMAL;
 
     public boolean isStrongAgainst(Type defender) {
         return switch (this) {
-            case FIRE -> (defender == GRASS || defender == INSECT); // Fire > Nature
+            case FIRE -> (defender == GRASS || defender == INSECT);
             case WATER -> defender == FIRE;
             case ELECTRIC -> defender == WATER;
             case EARTH -> defender == ELECTRIC;
-            case GRASS, INSECT -> defender == EARTH; // Nature > Earth
+            case GRASS, INSECT -> defender == EARTH;
             default -> false;
         };
     }
@@ -26,8 +26,8 @@ public enum Type {
             case FIRE -> defender == WATER;
             case WATER -> defender == ELECTRIC;
             case ELECTRIC -> defender == EARTH;
-            case EARTH -> (defender == GRASS || defender == INSECT); // Earth < Nature
-            case GRASS, INSECT -> defender == FIRE; // Nature < Fire
+            case EARTH -> (defender == GRASS || defender == INSECT);
+            case GRASS, INSECT -> defender == FIRE;
             default -> false;
         };
     }

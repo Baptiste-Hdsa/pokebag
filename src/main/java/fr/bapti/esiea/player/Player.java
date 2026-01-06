@@ -1,20 +1,21 @@
-package fr.bapti.esiea.Player;
+package fr.bapti.esiea.player;
 
-import fr.bapti.esiea.monster.PlayerMonster;
 import fr.bapti.esiea.item.Item;
+import fr.bapti.esiea.monster.PlayerMonster;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Player {
-    private final String name;
-    private final List<PlayerMonster> monsters;
-    private final List<Item> items;
-    private PlayerMonster currentMonster;
+    protected String name;
+    protected boolean human = true;
+    protected ArrayList<PlayerMonster> monsters;
+    protected ArrayList<Item> items;
+    protected PlayerMonster currentMonster;
 
-    private static final int MAX_MONSTERS = 3;
-    private static final int MAX_ITEMS = 5;
+    protected static final int MAX_MONSTERS = 6;
+    protected static final int MAX_ITEMS = 10;
 
     public Player(String name, ArrayList<PlayerMonster> monsters, ArrayList<Item> items) {
         if (monsters == null) throw new IllegalArgumentException("monsters cannot be null");
@@ -34,12 +35,20 @@ public class Player {
         return name;
     }
 
+    public boolean getHuman() {
+        return human;
+    }
+
+    public void setHuman(boolean Boolean) {
+        this.human = Boolean;
+    }
+
     public List<PlayerMonster> getMonsters() {
         return Collections.unmodifiableList(monsters);
     }
 
     public List<Item> getItems() {
-        return Collections.unmodifiableList(items);
+        return new ArrayList<>(items);
     }
 
     public PlayerMonster getCurrentMonster() {
