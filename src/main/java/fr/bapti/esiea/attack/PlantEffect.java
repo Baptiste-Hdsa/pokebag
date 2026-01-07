@@ -9,7 +9,7 @@ public class PlantEffect implements Effect {
     public void apply(PlayerMonster attacker, PlayerMonster defender) {
         if (Math.random() < 0.20) {
             attacker.setEtat(Etat.DEFAULT);
-            attacker.setCurrentHealth(attacker.getHealthRange().getPair()[0]);
+            attacker.setCurrentHealth(Math.min(attacker.getHealthRange().getPair()[1], attacker.getCurrentHealth()));
             System.out.println(attacker.getName() + " heals and cures status!");
         }
     }

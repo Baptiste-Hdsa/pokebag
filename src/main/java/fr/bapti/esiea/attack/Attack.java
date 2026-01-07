@@ -26,21 +26,21 @@ public class Attack {
         this.effect = effect;
     }
 
-    public void use(PlayerMonster attacker, PlayerMonster defender) {
+    public boolean use(PlayerMonster attacker, PlayerMonster defender) {
         if (this.useCount <= 0) {
             System.out.println(this.name + " has no uses left!");
             useUnarmed(attacker, defender);
-            return;
+            return false;
         }
 
         if (!attacker.getEtat().canAttack(attacker)) {
-            return;
+            return false;
         }
 
         if (Math.random() < failRate) {
             System.out.println(attacker.getName() + " used " + this.name + " but it failed!");
             this.useCount--;
-            return;
+            return false;
         }
 
         float advantage = (float) this.type.getAvantage(defender.getType());
@@ -48,12 +48,14 @@ public class Attack {
 
         defender.DecreaseHealth((int) damage);
         this.useCount--;
+        if (this.useCount < 0) this.useCount = 0;
 
         System.out.println(attacker.getName() + " used " + this.name + " and dealt " + (int)damage + " damage to " + defender.getName());
 
         if (this.effect != null) {
             this.effect.apply(attacker, defender);
         }
+        return true;
     }
 
     public static void useUnarmed(PlayerMonster attacker, PlayerMonster defender){

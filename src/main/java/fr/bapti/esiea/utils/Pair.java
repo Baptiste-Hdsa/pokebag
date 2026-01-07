@@ -13,4 +13,8 @@ public class Pair {
         return new int[]{min, max};
     }
 
+    public String getPairString(){
+        return min + " " + max;
+    }
+
 }

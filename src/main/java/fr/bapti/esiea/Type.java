@@ -41,4 +41,8 @@ public enum Type {
             return 1.0;
         }
     }
+
+    public boolean isNature() {
+        return this == GRASS || this == INSECT;
+    }
 }

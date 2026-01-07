@@ -30,10 +30,18 @@ public enum Etat {
     PARALYZED {
         @Override
         public void onTurnStart(PlayerMonster m) {
+            m.incrementParalyzedTurns();
+            float p = Math.min(1f, m.getParalyzedTurns() / 6f);
+            if (Math.random() < p) {
+                m.setEtat(Etat.DEFAULT);
+                m.resetParalyzedTurns();
+                System.out.println(m.getName() + " recovers from paralysis!");
+            }
         }
 
         @Override
         public boolean canAttack(PlayerMonster m) {
+            if (m.getEtat() != PARALYZED) return true;
             if (Math.random() < 0.25) {
                 return true;
             } else {

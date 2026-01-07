@@ -74,7 +74,7 @@ public class PlayBattleSolo extends PlayBattle{
             System.out.println("Choose attack:");
             for (int i = 0; i < m.getAttacks().size(); i++) {
                 Attack a = m.getAttacks().get(i);
-                System.out.println(i + ": " + a.getName() + " (" + a.getUseCount() + " PP)");
+                System.out.println(i + ": " + a.getName() + " (" + a.getUseCount() + " UseCount, Power: " + a.getPower() + ")");
             }
             try {
                 int idx = Integer.parseInt(scanner.nextLine());

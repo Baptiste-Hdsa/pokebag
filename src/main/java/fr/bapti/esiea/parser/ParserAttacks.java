@@ -60,16 +60,12 @@ public class ParserAttacks {
 
                         if (type == Type.FIRE) {
                             attack.setEffect(new StatusEffect(Etat.BURNED, 0.2f));
-                        } else if (type == Type.ELECTRIC) {
-                            attack.setEffect(new StatusEffect(Etat.PARALYZED, 0.2f));
-                        } else if (type == Type.INSECT) {
-                            attack.setEffect(new StatusEffect(Etat.POISONED, 0.33f));
                         } else if (type == Type.EARTH) {
                             attack.setEffect(new EarthEffect());
                         } else if (type == Type.GRASS) {
                             attack.setEffect(new PlantEffect());
                         }
-                        
+
                         attacks.add(attack);
                     }
                 }

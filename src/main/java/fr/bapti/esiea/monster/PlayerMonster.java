@@ -1,9 +1,7 @@
 package fr.bapti.esiea.monster;
 
 import fr.bapti.esiea.Etat;
-import fr.bapti.esiea.Type;
 import fr.bapti.esiea.attack.Attack;
-import fr.bapti.esiea.utils.Pair;
 import fr.bapti.esiea.utils.RandomTools;
 
 import java.util.ArrayList;
@@ -22,6 +20,9 @@ public class PlayerMonster extends Monster {
     private boolean isUnderground = false;
     private int undergroundTurns = 0;
     private int originalDefense;
+
+    private int paralyzedTurns = 0;
+    private int insectSpecialCount = 0;
 
     public PlayerMonster(Monster model, ArrayList<Attack> chosenAttacks){
         super(model.getName(), model.getHealthRange(), model.getAttack(), model.getDefense(),
@@ -50,7 +51,16 @@ public class PlayerMonster extends Monster {
 
     public void setEtat(Etat etat) {
         this.etat = etat;
+        this.paralyzedTurns = 0;
     }
+
+    public int getParalyzedTurns() { return paralyzedTurns; }
+    public void incrementParalyzedTurns() { this.paralyzedTurns++; }
+    public void resetParalyzedTurns() { this.paralyzedTurns = 0; }
+
+    public int getInsectSpecialCount() { return insectSpecialCount; }
+    public void incrementInsectSpecialCount() { this.insectSpecialCount++; }
+    public void resetInsectSpecialCount() { this.insectSpecialCount = 0; }
 
     public void DecreaseHealth(int damage){
         this.currentHealth -= damage;
@@ -58,7 +68,8 @@ public class PlayerMonster extends Monster {
     }
     
     public void IncreaseHealth(int amount){
-        this.currentHealth += amount;
+        int maxHp = getHealthRange().getPair()[1];
+        this.currentHealth = Math.min(maxHp, this.currentHealth + amount);
     }
     
     public boolean isAlive() {
@@ -66,7 +77,8 @@ public class PlayerMonster extends Monster {
     }
 
     public void setCurrentHealth(int amount) {
-        this.currentHealth = amount;
+        int maxHp = getHealthRange().getPair()[1];
+        this.currentHealth = Math.max(0, Math.min(maxHp, amount));
     }
 
     public void goUnderground(int turns) {

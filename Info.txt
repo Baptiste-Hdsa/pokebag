@@ -19,5 +19,5 @@ Info sur pouvoir :
 
 
 switch auto après mort | FAIT
-isflooded -> unarmedattack pas de attaquestats donc peut pas s'infliger de dégats
-isflooded s'enlève si le metteur de flooded part ou/et meurt
+isflooded -> unarmedattack pas de attaquestats donc peut pas s'infliger de dégats | bas besoin, le monster s'inflige power/4
+isflooded s'enlève si le créateur de flooded part ou/et meurt
