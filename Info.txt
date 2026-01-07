@@ -18,33 +18,6 @@ Info sur pouvoir :
     L'innondation durt 1 à trois 3 tours
 
 
-src/
-└── fr/
-    └── esiea/
-        └── monstredepoche/
-            ├── Main.java                   // Point d'entrée
-            ├── model/                      // Les données
-            │   ├── Type.java               // Enum (FEU, EAU...)
-            │   ├── Statut.java             // Enum (BRULE, PARALYSE...)
-            │   ├── Attaque.java
-            │   ├── Joueur.java
-            │   ├── items/
-            │   │   ├── Objet.java          // Interface ou Classe Abstraite
-            │   │   ├── Potion.java
-            │   │   └── Medicament.java
-            │   └── monstres/
-            │       ├── Monstre.java        // Classe Mère Abstraite
-            │       ├── MonstreFeu.java
-            │       ├── MonstreEau.java
-            │       ├── MonstreTerre.java
-            │       ├── MonstreFoudre.java
-            │       ├── MonstrePlante.java
-            │       └── MonstreInsecte.java
-            ├── logic/                      // La mécanique
-            │   ├── MoteurCombat.java       // Gère les tours et l'ordre
-            │   ├── CalculateurDegats.java  // La formule mathématique
-            │   └── Terrain.java            // Gère l'inondation
-            ├── data/                       // Gestion des fichiers
-            │   └── ChargeurDonnees.java    // Le parser de fichier texte
-            └── view/                       // Interaction utilisateur
-                └── ConsoleInterface.java
+switch auto après mort | FAIT
+isflooded -> unarmedattack pas de attaquestats donc peut pas s'infliger de dégats
+isflooded s'enlève si le metteur de flooded part ou/et meurt

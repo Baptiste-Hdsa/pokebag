@@ -8,8 +8,6 @@ import fr.bapti.esiea.parser.ParserAttacks;
 import fr.bapti.esiea.parser.ParserMonster;
 import fr.bapti.esiea.ui.ChooseMonsters;
 import fr.bapti.esiea.ui.ChoseItems;
-import fr.bapti.esiea.ui.ChooseMonsters;
-import fr.bapti.esiea.ui.battle.PlayBattle;
 import fr.bapti.esiea.ui.battle.PlayBattleMulti;
 import fr.bapti.esiea.player.Player;
 import fr.bapti.esiea.ui.battle.PlayBattleSolo;

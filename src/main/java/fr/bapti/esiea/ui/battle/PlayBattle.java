@@ -51,7 +51,6 @@ public abstract class PlayBattle {
                 firstAction = action2; secondAction = action1;
             }
         } else if (action2.type == ActionType.ATTACK && action1.type != ActionType.ATTACK) {
-
             first = player2; second = player1;
             firstAction = action2; secondAction = action1;
         }
@@ -82,10 +81,15 @@ public abstract class PlayBattle {
                 System.out.println(m.getName() + " washes away the poison!");
             }
         }
-
         if (isFlooded && m.getEtat() == Etat.BURNED) {
             m.setEtat(Etat.DEFAULT);
             System.out.println(m.getName() + " is cooled down by the water!");
+        }
+
+        if (p.getCurrentMonster().isAlive()) {
+            p.removeMonster(m);
+            Action action = askAction(p);
+            executeSwitch(p, action);
         }
     }
 
@@ -140,10 +144,10 @@ public abstract class PlayBattle {
 
     public void handleGlobalEffects(PlayerMonster attacker, Attack attack) {
         if (attacker.getType() == Type.WATER && attack.getType() == Type.WATER) {
-            if (Math.random() < attacker.getFlood()) {
+            if (Math.random() < attacker.getFlood() && !isFlooded) {
                 isFlooded = true;
                 floodTurns = (int)(1 + Math.random() * 3);
-                System.out.println("The terrain is flooded for " + floodTurns + " turns!");
+                System.out.println("The terrain is flooded for " + floodTurns + " turns by " +  attacker.getName() + "!");
             }
         }
     }

@@ -4,7 +4,6 @@ import fr.bapti.esiea.item.Item;
 import fr.bapti.esiea.monster.PlayerMonster;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Player {
@@ -43,8 +42,9 @@ public class Player {
         this.human = Boolean;
     }
 
-    public List<PlayerMonster> getMonsters() {
-        return Collections.unmodifiableList(monsters);
+    public List<PlayerMonster> getMonsters() { return new ArrayList<>(monsters); }
+    public void removeMonster(PlayerMonster monster) {
+        this.monsters.remove(monster);
     }
 
     public List<Item> getItems() {
