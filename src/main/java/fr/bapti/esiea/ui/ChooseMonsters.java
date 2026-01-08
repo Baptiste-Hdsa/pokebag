@@ -1,6 +1,7 @@
 package fr.bapti.esiea.ui;
 
 import fr.bapti.esiea.Type;
+import fr.bapti.esiea.attack.PlayerAttack;
 import fr.bapti.esiea.monster.Monster;
 import fr.bapti.esiea.monster.PlayerMonster;
 import fr.bapti.esiea.attack.Attack;
@@ -13,10 +14,10 @@ import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
 public class ChooseMonsters {
     private static final int MAX_MONSTERS = 3;
 
-    public ArrayList<PlayerMonster> chooseMonsters(ArrayList<Monster> listMonster, ArrayList<Attack> listAttack, boolean human){
+    public ArrayList<PlayerMonster> choseMonsters(ArrayList<Monster> listMonster, ArrayList<Attack> listAttack, boolean human){
         Scanner scanner = new Scanner(System.in);
         ArrayList<PlayerMonster> selected = new ArrayList<>();
-        ChoseAttacks choseAttacks = new ChoseAttacks();
+        ChooseAttacks choseAttacks = new ChooseAttacks();
 
         while (selected.size() < MAX_MONSTERS) {
             System.out.println("Choose up to " + MAX_MONSTERS + " Monsters by entering their number (type 'done' to finish):");
@@ -71,7 +72,7 @@ public class ChooseMonsters {
                 }
             }
 
-            ArrayList<Attack> chosenAttacks = choseAttacks.chooseAttacks(chosen, availableAttacks, human);
+            ArrayList<PlayerAttack> chosenAttacks = ChooseAttacks.chooseTheAttacks(chosen, availableAttacks, human);
 
             PlayerMonster playerMonster = new PlayerMonster(chosen, chosenAttacks);
 
@@ -84,7 +85,7 @@ public class ChooseMonsters {
             Monster m = listMonster.get(0);
             ArrayList<Attack> availableAttacks = new ArrayList<>();
             for (Attack a : listAttack) if (a.getType() == Type.NORMAL || a.getType() == m.getType()) availableAttacks.add(a);
-            selected.add(new PlayerMonster(m, choseAttacks.chooseAttacks(m, availableAttacks, human)));
+            selected.add(new PlayerMonster(m, ChooseAttacks.chooseTheAttacks(m, availableAttacks, human)));
         }
 
         return selected;

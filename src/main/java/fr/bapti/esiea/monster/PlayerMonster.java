@@ -2,9 +2,11 @@ package fr.bapti.esiea.monster;
 
 import fr.bapti.esiea.Etat;
 import fr.bapti.esiea.attack.Attack;
+import fr.bapti.esiea.attack.PlayerAttack;
 import fr.bapti.esiea.utils.RandomTools;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PlayerMonster extends Monster {
@@ -15,7 +17,7 @@ public class PlayerMonster extends Monster {
     private int currentSpeed;
     
     private Etat etat;
-    private List<Attack> currentAttacks;
+    private List<PlayerAttack> currentAttacks;
 
     private boolean isUnderground = false;
     private int undergroundTurns = 0;
@@ -24,7 +26,7 @@ public class PlayerMonster extends Monster {
     private int paralyzedTurns = 0;
     private int insectSpecialCount = 0;
 
-    public PlayerMonster(Monster model, ArrayList<Attack> chosenAttacks){
+    public PlayerMonster(Monster model, ArrayList<PlayerAttack> chosenAttacks){
         super(model.getName(), model.getHealthRange(), model.getAttack(), model.getDefense(),
               model.getSpeed(), model.getType(), model.getAttacks(),
               model.getFlood(), model.getFall(), model.getParalysis());
@@ -45,9 +47,10 @@ public class PlayerMonster extends Monster {
     public int getDefenseStat() { return currentDefense; }
     public int getSpeedStat() { return currentSpeed; }
     public Etat getEtat() { return etat; }
-    
-    @Override
-    public List<Attack> getAttacks() { return currentAttacks; }
+
+    public List<PlayerAttack> getPlayerAttacks() {
+        return currentAttacks;
+    }
 
     public void setEtat(Etat etat) {
         this.etat = etat;
@@ -56,7 +59,6 @@ public class PlayerMonster extends Monster {
 
     public int getParalyzedTurns() { return paralyzedTurns; }
     public void incrementParalyzedTurns() { this.paralyzedTurns++; }
-    public void resetParalyzedTurns() { this.paralyzedTurns = 0; }
 
     public int getInsectSpecialCount() { return insectSpecialCount; }
     public void incrementInsectSpecialCount() { this.insectSpecialCount++; }
@@ -98,5 +100,9 @@ public class PlayerMonster extends Monster {
                 System.out.println(getName() + " resurfaced.");
             }
         }
+    }
+
+    public void resetParalyzedTurns() {
+        paralyzedTurns = 0;
     }
 }

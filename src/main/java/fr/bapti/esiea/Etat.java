@@ -34,7 +34,6 @@ public enum Etat {
             float p = Math.min(1f, m.getParalyzedTurns() / 6f);
             if (Math.random() < p) {
                 m.setEtat(Etat.DEFAULT);
-                m.resetParalyzedTurns();
                 System.out.println(m.getName() + " recovers from paralysis!");
             }
         }

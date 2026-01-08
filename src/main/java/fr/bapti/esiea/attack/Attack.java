@@ -6,12 +6,12 @@ import fr.bapti.esiea.Type;
 import static fr.bapti.esiea.utils.RandomTools.getRandomFloat;
 
 public class Attack {
-    private String name;
-    private Type type;
-    private int useCount;
-    private int power;
-    private float failRate;
-    private Effect effect;
+    protected String name;
+    protected Type type;
+    protected int useCount;
+    protected int power;
+    protected float failRate;
+    protected Effect effect;
 
     public Attack(String name, Type type, int useCount, int power, float failRate){
         this.name = name;
@@ -24,38 +24,6 @@ public class Attack {
 
     public void setEffect(Effect effect) {
         this.effect = effect;
-    }
-
-    public boolean use(PlayerMonster attacker, PlayerMonster defender) {
-        if (this.useCount <= 0) {
-            System.out.println(this.name + " has no uses left!");
-            useUnarmed(attacker, defender);
-            return false;
-        }
-
-        if (!attacker.getEtat().canAttack(attacker)) {
-            return false;
-        }
-
-        if (Math.random() < failRate) {
-            System.out.println(attacker.getName() + " used " + this.name + " but it failed!");
-            this.useCount--;
-            return false;
-        }
-
-        float advantage = (float) this.type.getAvantage(defender.getType());
-        float damage = (float) (( (float) (11 * attacker.getAttackStat() * this.power) / (25 * defender.getDefenseStat()) + 2) * getRandomFloat(0.85f, 1) * advantage);
-
-        defender.DecreaseHealth((int) damage);
-        this.useCount--;
-        if (this.useCount < 0) this.useCount = 0;
-
-        System.out.println(attacker.getName() + " used " + this.name + " and dealt " + (int)damage + " damage to " + defender.getName());
-
-        if (this.effect != null) {
-            this.effect.apply(attacker, defender);
-        }
-        return true;
     }
 
     public static void useUnarmed(PlayerMonster attacker, PlayerMonster defender){

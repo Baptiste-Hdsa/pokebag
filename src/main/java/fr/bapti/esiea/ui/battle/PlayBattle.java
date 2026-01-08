@@ -5,6 +5,7 @@ import fr.bapti.esiea.ActionType;
 import fr.bapti.esiea.Etat;
 import fr.bapti.esiea.Type;
 import fr.bapti.esiea.attack.Attack;
+import fr.bapti.esiea.attack.PlayerAttack;
 import fr.bapti.esiea.item.Item;
 import fr.bapti.esiea.monster.PlayerMonster;
 import fr.bapti.esiea.player.Player;
@@ -156,8 +157,7 @@ public abstract class PlayBattle {
         PlayerMonster defM = defender.getCurrentMonster();
 
         attM.getEtat().onTurnStart(attM);
-        if (!attM.isAlive()) {40 60
-1. Raichu (ELECTRIC, Attack : 75 95, Health : 110 130, Defense :55 75
+        if (!attM.isAlive()) {
             handleKOSwitch(attacker);
             return;
         }
@@ -179,7 +179,7 @@ public abstract class PlayBattle {
         if (a.index == -1) {
             Attack.useUnarmed(attM, defM);
         } else {
-            Attack attack = attM.getAttacks().get(a.index);
+            PlayerAttack attack = (PlayerAttack) attM.getAttacks().get(a.index);
             boolean success = attack.use(attM, defM);
 
             if (success) {

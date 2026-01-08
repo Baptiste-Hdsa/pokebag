@@ -38,7 +38,7 @@ public class Main {
 
         if (answer == 2) {
             System.out.println("\n=== PLAYER 1 SETUP ===");
-            ArrayList<PlayerMonster> p1Monsters = chooseMonsters.chooseMonsters(listMonster, listAttack, true);
+            ArrayList<PlayerMonster> p1Monsters = chooseMonsters.choseMonsters(listMonster, listAttack, true);
             ArrayList<Item> p1Items = choseItems.chooseItems(true);
             p1 = new Player("Player1", p1Monsters, p1Items);
 
@@ -46,7 +46,7 @@ public class Main {
             System.out.println("\nEnter your name:");
             String name2 = scanner.nextLine();
             if (name2 == null || name2.isBlank()) name2 = "Player2";
-            ArrayList<PlayerMonster> p2Monsters = chooseMonsters.chooseMonsters(listMonster, listAttack, true);
+            ArrayList<PlayerMonster> p2Monsters = chooseMonsters.choseMonsters(listMonster, listAttack, true);
             ArrayList<Item> p2Items = choseItems.chooseItems(true);
             p2 = new Player(name2, p2Monsters, p2Items);
 
@@ -54,11 +54,11 @@ public class Main {
             battle.start();
         } else {
             System.out.println("\n=== PLAYER SETUP ===");
-            ArrayList<PlayerMonster> p1Monsters = chooseMonsters.chooseMonsters(listMonster, listAttack, true);
+            ArrayList<PlayerMonster> p1Monsters = chooseMonsters.choseMonsters(listMonster, listAttack, true);
             ArrayList<Item> p1Items = choseItems.chooseItems(true);
             p1 = new Player("Player", p1Monsters, p1Items);
 
-            ArrayList<PlayerMonster> p2Monsters = chooseMonsters.chooseMonsters(listMonster, listAttack, false);
+            ArrayList<PlayerMonster> p2Monsters = chooseMonsters.choseMonsters(listMonster, listAttack, false);
             ArrayList<Item> p2Items = choseItems.chooseItems(false);
             p2 = new Player("Bot", p2Monsters, p2Items);
 

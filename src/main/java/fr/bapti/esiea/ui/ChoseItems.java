@@ -12,7 +12,7 @@ import java.util.Scanner;
 import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
 
 public class ChoseItems {
-    public ArrayList<Item> chooseItems(boolean human) {
+    public static ArrayList<Item> chooseItems(boolean human) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Item> selected = new ArrayList<>();
         ArrayList<Item> availableItems = new ArrayList<>();

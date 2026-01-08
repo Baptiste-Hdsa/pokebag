@@ -1,6 +1,7 @@
 package fr.bapti.esiea.ui;
 
 import fr.bapti.esiea.attack.Attack;
+import fr.bapti.esiea.attack.PlayerAttack;
 import fr.bapti.esiea.monster.Monster;
 
 import java.util.ArrayList;
@@ -8,10 +9,10 @@ import java.util.Scanner;
 
 import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
 
-public class ChoseAttacks {
-    public ArrayList<Attack> chooseAttacks(Monster monster, ArrayList<Attack> listAttack, boolean human) {
+public class ChooseAttacks {
+    public static ArrayList<PlayerAttack> chooseTheAttacks(Monster monster, ArrayList<Attack> listAttack, boolean human) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Attack> selected = new ArrayList<>();
+        ArrayList<PlayerAttack> selected = new ArrayList<>();
 
         System.out.println("Choose up to 4 attacks for " + monster.getName() + " by entering their number (type 'done' to finish):");
         for (int i = 0; i < listAttack.size(); i++) {
@@ -49,7 +50,11 @@ public class ChoseAttacks {
                 System.out.println("Attack already selected. Choose a different one.");
                 continue;
             }
-            selected.add(chosen);
+
+            PlayerAttack playerAttack = new PlayerAttack(chosen);
+
+            selected.add(playerAttack);
+
             System.out.println(chosen.getName() + " added. (" + selected.size() + "/4)");
         }
 
