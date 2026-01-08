@@ -34,6 +34,7 @@ public class Main {
 
         System.out.println("\nSOLO OR MULTI? \n1. Solo \n2. Multi\n");
         int answer = scanner.nextInt();
+        scanner.nextLine();
 
         if (answer == 2) {
             System.out.println("\n=== PLAYER 1 SETUP ===");
@@ -42,11 +43,12 @@ public class Main {
             p1 = new Player("Player1", p1Monsters, p1Items);
 
             System.out.println("\n=== PLAYER 2 SETUP ===");
-            System.out.println("\nChose your name");
+            System.out.println("\nEnter your name:");
             String name2 = scanner.nextLine();
+            if (name2 == null || name2.isBlank()) name2 = "Player2";
             ArrayList<PlayerMonster> p2Monsters = chooseMonsters.chooseMonsters(listMonster, listAttack, true);
             ArrayList<Item> p2Items = choseItems.chooseItems(true);
-            p2 = new Player("Player2", p2Monsters, p2Items);
+            p2 = new Player(name2, p2Monsters, p2Items);
 
             PlayBattleMulti battle = new PlayBattleMulti(p1, p2);
             battle.start();
@@ -58,7 +60,7 @@ public class Main {
 
             ArrayList<PlayerMonster> p2Monsters = chooseMonsters.chooseMonsters(listMonster, listAttack, false);
             ArrayList<Item> p2Items = choseItems.chooseItems(false);
-            p2 = new Player("Robot", p2Monsters, p2Items);
+            p2 = new Player("Bot", p2Monsters, p2Items);
 
             PlayBattleSolo battle = new PlayBattleSolo(p1, p2);
             battle.start();

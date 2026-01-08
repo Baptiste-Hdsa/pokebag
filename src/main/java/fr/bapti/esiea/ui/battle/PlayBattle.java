@@ -156,7 +156,8 @@ public abstract class PlayBattle {
         PlayerMonster defM = defender.getCurrentMonster();
 
         attM.getEtat().onTurnStart(attM);
-        if (!attM.isAlive()) { // died to burn/poison at turn start
+        if (!attM.isAlive()) {40 60
+1. Raichu (ELECTRIC, Attack : 75 95, Health : 110 130, Defense :55 75
             handleKOSwitch(attacker);
             return;
         }

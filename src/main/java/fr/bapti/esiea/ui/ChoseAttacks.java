@@ -15,7 +15,7 @@ public class ChoseAttacks {
 
         System.out.println("Choose up to 4 attacks for " + monster.getName() + " by entering their number (type 'done' to finish):");
         for (int i = 0; i < listAttack.size(); i++) {
-            System.out.println(i + " : " + listAttack.get(i).getName() + " (" + listAttack.get(i).getUseCount() + ", " + listAttack.get(i).getPower() + ")");
+            System.out.println(i + ". " + listAttack.get(i).getName() + " (UseCount : " + listAttack.get(i).getUseCount() + ", Power : " + listAttack.get(i).getPower() + ")");
         }
 
         while (selected.size() < 4) {

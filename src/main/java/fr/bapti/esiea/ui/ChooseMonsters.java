@@ -22,7 +22,7 @@ public class ChooseMonsters {
             System.out.println("Choose up to " + MAX_MONSTERS + " Monsters by entering their number (type 'done' to finish):");
             System.out.println("You have selected " + selected.size() + " Monster/s.");
             for (int i = 0; i < listMonster.size(); i++) {
-                System.out.println(i + " : " + listMonster.get(i).getName() + " (" + listMonster.get(i).getType() + ", Attack : " + listMonster.get(i).getAttack().getPairString() + ", Health : " + listMonster.get(i).getHealthRange().getPairString() + ", Defense :" + listMonster.get(i).getDefense().getPairString());
+                System.out.println(i + ". " + listMonster.get(i).getName() + " (" + listMonster.get(i).getType() + ", Attack : " + listMonster.get(i).getAttack().getPairString() + ", Health : " + listMonster.get(i).getHealthRange().getPairString() + ", Defense :" + listMonster.get(i).getDefense().getPairString());
             }
             System.out.print("Enter index (" + selected.size() + "/" + MAX_MONSTERS + ") or 'done': ");
             String line;

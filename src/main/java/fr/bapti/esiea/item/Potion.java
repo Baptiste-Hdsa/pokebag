@@ -17,6 +17,8 @@ public class Potion implements Item {
         return name;
     }
 
+    public Etat getTargetStatus() { return targetStatus; }
+
     @Override
     public void use(PlayerMonster monster) {
         if (monster.getEtat() == targetStatus) {

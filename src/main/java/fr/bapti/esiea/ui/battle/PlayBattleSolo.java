@@ -1,14 +1,17 @@
 package fr.bapti.esiea.ui.battle;
 
 import fr.bapti.esiea.ActionType;
+import fr.bapti.esiea.Etat;
+import fr.bapti.esiea.Type;
 import fr.bapti.esiea.attack.Attack;
+import fr.bapti.esiea.item.Drug;
+import fr.bapti.esiea.item.Item;
+import fr.bapti.esiea.item.Potion;
 import fr.bapti.esiea.monster.PlayerMonster;
 import fr.bapti.esiea.player.Player;
 import fr.bapti.esiea.utils.Action;
 
 import java.util.Scanner;
-
-import static fr.bapti.esiea.utils.RandomTools.getRandomInt;
 
 public class PlayBattleSolo extends PlayBattle{
     
@@ -19,10 +22,100 @@ public class PlayBattleSolo extends PlayBattle{
         this.scanner = new Scanner(System.in);
     }
     
+    private Player opponentOf(Player p) { return (p == player1) ? player2 : player1; }
+
+    private float expectedDamage(Attack a, PlayerMonster attacker, PlayerMonster defender) {
+        if (a.getUseCount() <= 0) return 0f;
+        float atk = attacker.getAttackStat();
+        float def = Math.max(1, defender.getDefenseStat());
+        float avgRand = (0.85f + 1f) / 2f;
+        float advantage = (float) a.getType().getAvantage(defender.getType());
+        float base = ((11f * atk * a.getPower()) / (25f * def) + 2f);
+        float dmg = base * avgRand * advantage * (1f - a.getFailRate());
+        if (a.getType() == attacker.getType()) dmg *= 1.05f;
+        if (isFlooded && attacker.getType() != Type.WATER) {
+            float slipProb = (theFlooder != null) ? theFlooder.getFall() : 0.25f;
+            dmg *= (1f - slipProb);
+        }
+        return Math.max(0f, dmg);
+    }
+
+    private int chooseBestAttackIndex(Player p) {
+        PlayerMonster m = p.getCurrentMonster();
+        PlayerMonster enemy = opponentOf(p).getCurrentMonster();
+        float bestScore = -1f;
+        int bestIdx = -1;
+        for (int i = 0; i < m.getAttacks().size(); i++) {
+            Attack a = m.getAttacks().get(i);
+            float score = expectedDamage(a, m, enemy);
+            if (score > bestScore) { bestScore = score; bestIdx = i; }
+        }
+        return bestIdx;
+    }
+
+    private boolean hasBetterSwitchOption(Player p) {
+        PlayerMonster enemy = opponentOf(p).getCurrentMonster();
+        Type enemyType = enemy.getType();
+        Type currentType = p.getCurrentMonster().getType();
+        boolean currentWeak = currentType.isWeakAgainst(enemyType);
+        boolean currentStrong = currentType.isStrongAgainst(enemyType);
+
+        for (PlayerMonster cand : p.getMonsters()) {
+            if (cand == p.getCurrentMonster() || !cand.isAlive()) continue;
+            if (cand.getType().isStrongAgainst(enemyType)) return true;
+        }
+        if (currentWeak) {
+            for (PlayerMonster cand : p.getMonsters()) {
+                if (cand == p.getCurrentMonster() || !cand.isAlive()) continue;
+                if (!cand.getType().isWeakAgainst(enemyType)) return true;
+            }
+        }
+        if (isFlooded && p.getCurrentMonster().getType() != Type.WATER) {
+            for (PlayerMonster cand : p.getMonsters()) {
+                if (cand == p.getCurrentMonster() || !cand.isAlive()) continue;
+                if (cand.getType() == Type.WATER) return true;
+            }
+        }
+        return false;
+    }
+
+    private int chooseBestSwitchIndex(Player p) {
+        PlayerMonster enemy = opponentOf(p).getCurrentMonster();
+        Type enemyType = enemy.getType();
+        int bestIdx = -1;
+        int bestScore = Integer.MIN_VALUE;
+        for (int i = 0; i < p.getMonsters().size(); i++) {
+            PlayerMonster cand = p.getMonsters().get(i);
+            if (cand == p.getCurrentMonster() || !cand.isAlive()) continue;
+            int score = 0;
+            if (cand.getType().isStrongAgainst(enemyType)) score += 3;
+            if (cand.getType().isWeakAgainst(enemyType)) score -= 3;
+            score += Math.min(2, cand.getSpeedStat() / 50);
+            score += Math.min(2, cand.getCurrentHealth() / 50);
+            if (isFlooded && cand.getType() == Type.WATER) score += 2;
+            if (score > bestScore) { bestScore = score; bestIdx = i; }
+        }
+        return bestIdx;
+    }
+
+
+    private String switchReason(Player p, PlayerMonster candidate) {
+        PlayerMonster enemy = opponentOf(p).getCurrentMonster();
+        Type enemyType = enemy.getType();
+        Type currentType = p.getCurrentMonster().getType();
+        if (isFlooded && p.getCurrentMonster().getType() != Type.WATER && candidate.getType() == Type.WATER)
+            return "to avoid slipping on the flooded terrain";
+        if (!currentType.isStrongAgainst(enemyType) && candidate.getType().isStrongAgainst(enemyType))
+            return "to gain type advantage";
+        if (currentType.isWeakAgainst(enemyType) && !candidate.getType().isWeakAgainst(enemyType))
+            return "to avoid being at a type disadvantage";
+        return "for a better overall option";
+    }
+
     @Override
     public void start() {
-        System.out.println("Battle Start! " + player1.getName() + " vs a Robot.");
-        
+        System.out.println("Battle Start! " + player1.getName() + " vs a Bot.");
+
         while (player1.hasAliveMonsters() && player2.hasAliveMonsters()) {
             startTurn();
         }
@@ -30,7 +123,7 @@ public class PlayBattleSolo extends PlayBattle{
         if(player1.hasAliveMonsters()) {
             System.out.println(player1.getName() + " wins!");
         } else {
-            System.out.println("The Robot wins!");
+            System.out.println("The Bot wins!");
         }
     }
 
@@ -56,13 +149,38 @@ public class PlayBattleSolo extends PlayBattle{
                 default: return askAttack(player);
             }
         } else {
-            int number = getRandomInt(1,3);
-            switch (Integer.toString(number)) {
-                case "1": return askAttack(player);
-                case "2": return askItem(player);
-                case "3": return askSwitch(player);
-                default: return askAttack(player);
+            PlayerMonster me = player.getCurrentMonster();
+            PlayerMonster foe = opponentOf(player).getCurrentMonster();
+            float hpRatio = (float) me.getCurrentHealth() / Math.max(1, me.getHealthRange().getPair()[1]);
+
+            if (isFlooded && me.getType() != Type.WATER && hasBetterSwitchOption(player)) {
+                int idx = chooseBestSwitchIndex(player);
+                if (idx >= 0) {
+                    PlayerMonster cand = player.getMonsters().get(idx);
+                    System.out.println("Bot: switches to " + cand.getName() + " (" + switchReason(player, cand) + ")");
+                    return new Action(ActionType.SWITCH, idx);
+                }
             }
+
+            if (hasBetterSwitchOption(player)) {
+                int idx = chooseBestSwitchIndex(player);
+                if (idx >= 0) {
+                    PlayerMonster cand = player.getMonsters().get(idx);
+                    System.out.println("Bot: switches to " + cand.getName() + " (" + switchReason(player, cand) + ")");
+                    return new Action(ActionType.SWITCH, idx);
+                }
+            }
+
+            if (me.getEtat() != Etat.DEFAULT) {
+                Action maybeCure = askItem(player);
+                if (maybeCure.type == ActionType.ITEM) return maybeCure;
+            }
+            if (hpRatio <= 0.35f) {
+                Action maybeHeal = askItem(player);
+                if (maybeHeal.type == ActionType.ITEM) return maybeHeal;
+            }
+
+            return askAttack(player);
         }
 
     }
@@ -81,14 +199,18 @@ public class PlayBattleSolo extends PlayBattle{
                 if (idx >= 0 && idx < m.getAttacks().size()) {
                     return new Action(ActionType.ATTACK, idx);
                 }
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         } else {
-            try {
-                int idx = getRandomInt(0, m.getAttacks().size() - 1);
-                if (idx >= 0 && idx < m.getAttacks().size()) {
-                    return new Action(ActionType.ATTACK, idx);
-                }
-            } catch (Exception e) {}
+            int idx = chooseBestAttackIndex(p);
+            if (idx >= 0) {
+                PlayerMonster enemy = opponentOf(p).getCurrentMonster();
+                Attack a = m.getAttacks().get(idx);
+                float est = expectedDamage(a, m, enemy);
+                return new Action(ActionType.ATTACK, idx);
+            } else {
+                System.out.println("Bot: no usable attack left, uses unarmed attack.");
+            }
         }
 
         return new Action(ActionType.ATTACK, -1);
@@ -110,14 +232,28 @@ public class PlayBattleSolo extends PlayBattle{
                 if (idx >= 0 && idx < p.getItems().size()) {
                     return new Action(ActionType.ITEM, idx);
                 }
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         } else {
-            try {
-                int idx = getRandomInt(0, p.getItems().size() - 1);
-                if (idx >= 0 && idx < p.getItems().size()) {
-                    return new Action(ActionType.ITEM, idx);
+            PlayerMonster me = p.getCurrentMonster();
+            for (int i = 0; i < p.getItems().size(); i++) {
+                Item it = p.getItems().get(i);
+                if (it instanceof Potion potion) {
+                    if (me.getEtat() != Etat.DEFAULT && potion.getTargetStatus() == me.getEtat()) {
+                        System.out.println("Bot: uses item " + it.getName() + " to cure status " + me.getEtat());
+                        return new Action(ActionType.ITEM, i);
+                    }
                 }
-            } catch (Exception e) {}
+            }
+            float hpRatio = (float) me.getCurrentHealth() / Math.max(1, me.getHealthRange().getPair()[1]);
+            if (hpRatio <= 0.35f) {
+                for (int i = 0; i < p.getItems().size(); i++) {
+                    if (p.getItems().get(i) instanceof Drug) {
+                        System.out.println("Bot: uses a healing item to recover HP");
+                        return new Action(ActionType.ITEM, i);
+                    }
+                }
+            }
         }
 
         return askAttack(p);
@@ -138,16 +274,19 @@ public class PlayBattleSolo extends PlayBattle{
                 if (idx >= 0 && idx < p.getMonsters().size() && p.getMonsters().get(idx).isAlive()) {
                     return new Action(ActionType.SWITCH, idx);
                 }
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
 
             if (p.getCurrentMonster().isAlive()) return askAttack(p);
         } else {
-            int idx = getRandomInt(0, p.getMonsters().size() - 1);
-            if (idx >= 0 && idx < p.getMonsters().size() && p.getMonsters().get(idx).isAlive()) {
+            int idx = chooseBestSwitchIndex(p);
+            if (idx >= 0) {
+                PlayerMonster cand = p.getMonsters().get(idx);
+                System.out.println("Bot: sends out " + cand.getName() + " (" + switchReason(p, cand) + ")");
                 return new Action(ActionType.SWITCH, idx);
             }
         }
         return new Action(ActionType.SWITCH, -1);
-    };
+    }
 
 }
