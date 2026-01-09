@@ -2,13 +2,6 @@
 
 Petit jeu de combat au tour par tour (inspiré Pokémon) en Java/Maven.
 
-## Lancer le jeu
-
-1. Construire le projet (Maven requis) :
-   - `mvn package`
-2. Exécuter :
-   - `java -jar target/pokebag-1.0-SNAPSHOT.jar`
-
 Le jeu lit les monstres et attaques depuis `Monsters.txt` et `Attacks.txt` à la racine du projet.
 
 ## Jouer
