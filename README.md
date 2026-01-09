@@ -4,6 +4,14 @@ Petit jeu de combat au tour par tour (inspiré Pokémon) en Java/Maven.
 
 Le jeu lit les monstres et attaques depuis `Monsters.txt` et `Attacks.txt` à la racine du projet.
 
+## Commande pour compiler:
+
+```
+mkdir -p out
+javac -d out $(find src -name "*.java")
+java -cp out fr.bapti.esiea.Main
+ ```
+
 ## Jouer
 
 - Au démarrage, choisissez le mode :
