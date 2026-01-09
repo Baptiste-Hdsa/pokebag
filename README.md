@@ -35,4 +35,6 @@ java -cp out fr.bapti.esiea.Main
 - Électrique (ELECTRIC) peut paralyser (récupération progressive).
 - Sous terre (terre) double la défense pendant quelques tours.
 
+### UML
 
+./pokebag/UML.png
